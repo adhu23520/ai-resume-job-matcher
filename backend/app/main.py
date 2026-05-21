@@ -1,8 +1,10 @@
 from fastapi import FastAPI
-from app.routes import resume
+from app.routes import resume, match
 
 app = FastAPI() #This is the FastAPI application. This object controls the backend
+
 app.include_router(resume.router)
+app.include_router(match.router)
 
 @app.get("/") 
 #This is a decorator. 
