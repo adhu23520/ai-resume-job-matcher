@@ -1,7 +1,17 @@
 from fastapi import FastAPI
 from app.routes import resume, match
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI() #This is the FastAPI application. This object controls the backend
+
+# Add this block — allows your Next.js frontend to talk to FastAPI
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(resume.router)
 app.include_router(match.router)

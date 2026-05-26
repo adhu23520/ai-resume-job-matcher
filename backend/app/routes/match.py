@@ -28,7 +28,7 @@ def get_match_level(score: float) -> str:
     else:
         return "Low Match"
 
-
+        
 @router.post("/match")
 async def match_resume_to_job(
     file: UploadFile = File(...),
